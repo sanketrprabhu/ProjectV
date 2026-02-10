@@ -199,7 +199,7 @@
         /* Toast notification */
         .toast {
             position: fixed;
-            bottom: -100px;
+            bottom: -150px;
             left: 50%;
             transform: translateX(-50%);
             background: linear-gradient(135deg, #ff6b81, #ff4757);
@@ -209,12 +209,15 @@
             font-size: 1.1rem;
             font-weight: 600;
             box-shadow: 0 10px 40px rgba(255, 71, 87, 0.5);
-            transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), visibility 0s 0.5s;
             z-index: 1000;
+            visibility: hidden;
         }
 
         .toast.show {
             bottom: 50px;
+            visibility: visible;
+            transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), visibility 0s 0s;
         }
 
         .sparkle {
