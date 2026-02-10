@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Question for Mrs. Apoorva 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1515 30%, #4a1c1c 60%, #1a0a0a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts background */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float-up 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 107, 129, 0.3);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 100px rgba(255, 107, 129, 0.2),
+                inset 0 0 60px rgba(255, 107, 129, 0.05);
+            max-width: 600px;
+            margin: 20px;
+            position: relative;
+            z-index: 1;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 
+                    0 25px 50px rgba(0, 0, 0, 0.5),
+                    0 0 100px rgba(255, 107, 129, 0.2),
+                    inset 0 0 60px rgba(255, 107, 129, 0.05);
+            }
+            50% {
+                box-shadow: 
+                    0 25px 50px rgba(0, 0, 0, 0.5),
+                    0 0 150px rgba(255, 107, 129, 0.4),
+                    inset 0 0 80px rgba(255, 107, 129, 0.1);
+            }
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff6b81;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255, 107, 129, 0.5);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.05); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.05); }
+            70% { transform: scale(1); }
+        }
+
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #ff6b81, #ffc3a0, #ff6b81);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .question {
+            font-size: 1.4rem;
+            color: #ffeef0;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 3rem;
+            font-size: 1.3rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff6b81, #ff4757);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 20px 40px rgba(255, 71, 87, 0.6);
+        }
+
+        .btn-yes::before {
+            content: '💕';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #576574, #3d3d3d);
+            color: #aaa;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-no:hover {
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+
+        .rose {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+            animation: sway 2s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff6b81, #ff4757);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 40px rgba(255, 71, 87, 0.5);
+            transition: bottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+        }
+
+        .toast.show {
+            bottom: 50px;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts"></div>
+    
+    <div class="container">
+        <span class="rose">🌹</span>
+        <h1 class="title">My Dearest</h1>
+        <h2 class="name">Mrs. Apoorva</h2>
+        <p class="question">
+            I love you so much, more than words could ever express. 
+            Every moment with you feels like a beautiful dream I never want to wake up from.
+            <br><br>
+            <strong>Would you be my Valentine and come out on a date with me? 💝</strong>
+        </p>
+        <div class="buttons">
+            <button class="btn btn-yes" onclick="sayYes()">Yes! 💖</button>
+            <button class="btn btn-no" onclick="sayNo()">No</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">That's not an option, my love! 😘💕</div>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            const hearts = ['💕', '❤️', '💖', '💗', '💝', '💘', '🌹', '✨'];
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        createHearts();
+
+        function sayYes() {
+            // Add celebration effect
+            document.body.style.transition = 'all 0.5s ease';
+            document.querySelector('.container').style.transform = 'scale(1.1)';
+            document.querySelector('.container').style.boxShadow = '0 0 200px rgba(255, 107, 129, 0.8)';
+            
+            setTimeout(() => {
+                window.location.href = 'yes.html';
+            }, 500);
+        }
+
+        let noClickCount = 0;
+        const noMessages = [
+            "That's not an option, my love! 😘💕",
+            "Nice try! But you can't escape my love! 💝",
+            "The 'No' button is just decoration! 😜",
+            "I'll keep asking forever! 💖",
+            "Your heart already said yes! 🌹",
+            "Click the right button, sweetheart! 💕",
+            "Why are you still clicking this? 😂",
+            "The button is literally disappearing! 👀",
+            "You're so stubborn... I love it! 💕",
+            "Almost gone... just click Yes already! 🙄",
+            "Fine, keep clicking thin air! 😜",
+            "Okay now you're just being dramatic 💅",
+            "I can do this all day! ⚡",
+            "Your finger must be tired by now! 😴",
+            "Plot twist: there's only one real option! 🎭"
+        ];
+
+        function sayNo() {
+            const toast = document.getElementById('toast');
+            const noBtn = document.querySelector('.btn-no');
+            const yesBtn = document.querySelector('.btn-yes');
+            
+            // Calculate new scale - shrink by 0.12 each time
+            const newScale = Math.max(0, 1 - (noClickCount + 1) * 0.12);
+            
+            // Make the No button smaller and wiggle around
+            noBtn.style.transform = `scale(${newScale}) translateX(${(Math.random() - 0.5) * 100}px)`;
+            noBtn.style.opacity = newScale;
+            
+            // Show message (loop through array)
+            toast.textContent = noMessages[noClickCount % noMessages.length];
+            toast.classList.add('show');
+            
+            noClickCount++;
+            
+            // Make yes button bigger (cap at 1.8x)
+            const yesScale = Math.min(1.8, 1 + noClickCount * 0.1);
+            yesBtn.style.transform = `scale(${yesScale})`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+
+            // When button fully disappears
+            if (newScale <= 0) {
+                noBtn.style.visibility = 'hidden';
+                setTimeout(() => {
+                    toast.textContent = "The No button has left the chat! 👋😂 Only Yes remains!";
+                    toast.classList.add('show');
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
